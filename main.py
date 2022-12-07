@@ -3,8 +3,8 @@ from itertools import product
 
 
 def find_password(iterable: str, size: int, salt: str, hash: str, rounds: int) -> str:
-    for i in product(iterable, repeat=size):
-        password = ''.join(i)
+    for combination in product(iterable, repeat=size):
+        password = ''.join(combination)
 
         if sha512_crypt.using(salt=salt, rounds=rounds).hash(password) == hash:
             return password
